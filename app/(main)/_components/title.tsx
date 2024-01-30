@@ -54,30 +54,34 @@ export const Title = ({
   };
 
   return (
-    <div className="flex items-center gap-x-1">
-      {!!initialData.icon && <p>{initialData.icon}</p>}
-      {isEditing ? (
-        <Input
-          ref={inputRef}
-          onClick={enableInput}
-          onBlur={disableInput}
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          value={title}
-          className="h-7 px-2 focus-visible:ring-transparent"
-        />
-      ) : (
-        <Button
-          onClick={enableInput}
-          variant="ghost"
-          size="sm"
-          className="font-normal h-auto p-1"
-        >
-          <span className="truncate">
-            {initialData?.title}
-          </span>
-        </Button>
-      )}
+    <div className="flex justify-center items-center">
+      <div className="flex items-center gap-x-1">
+        <div className="flex items-center gap-x-1 text-foreground">
+          {!!initialData.icon && <p>{initialData.icon}</p>}
+          {isEditing ? (
+            <Input
+              ref={inputRef}
+              onClick={enableInput}
+              onBlur={disableInput}
+              onChange={onChange}
+              onKeyDown={onKeyDown}
+              value={title}
+              className="h-7 px-2 focus-visible:ring-transparent"
+            />
+          ) : (
+            <Button
+              onClick={enableInput}
+              variant="ghost"
+              size="md"
+              className="font-normal h-auto p-1"
+            >
+              <span className="truncate">
+                {initialData?.title}
+              </span>
+            </Button>
+          )}
+        </div>
+      </div>
     </div>
   )
 }
