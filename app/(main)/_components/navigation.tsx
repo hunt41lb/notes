@@ -1,6 +1,8 @@
 "use client";
 
 import {
+  FolderClosed,
+  FolderOpen,
   ChevronsLeft,
   MenuIcon,
   Plus,
@@ -25,6 +27,7 @@ import {
 import { useSearch } from "@/hooks/use-search";
 import { useSettings } from "@/hooks/use-settings";
 
+import { DropdownMenuAccount } from "./dropdownmenu-account";
 import { UserItem } from "./user-item";
 import { Item } from "./item";
 import { DocumentList } from "./document-list";
@@ -45,6 +48,7 @@ export const Navigation = () => {
   const navbarRef = useRef<ElementRef<"div">>(null);
   const [isResetting, setIsResetting] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(isMobile);
+  const [isNotesCollapsed, setIsNotesCollapsed] = useState(false);
 
   useEffect(() => {
     if (isMobile) {
@@ -132,12 +136,16 @@ export const Navigation = () => {
     });
   };
 
+  const toggleNotesCollapse = () => {
+    setIsNotesCollapsed(!isNotesCollapsed);
+  };
+
   return (
     <>
       <aside
         ref={sidebarRef}
         className={cn(
-          "group/sidebar h-full bg-secondary overflow-y-auto relative flex w-60 flex-col z-[99999]",
+          "group/sidebar border-r border-border h-full bg-background overflow-y-auto relative flex w-60 flex-col z-[99999]",
           isResetting && "transition-all ease-in-out duration-300",
           isMobile && "w-0"
         )}
@@ -146,7 +154,7 @@ export const Navigation = () => {
           onClick={collapse}
           role="button"
           className={cn(
-            "h-6 w-6 text-muted-foreground rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600 absolute top-3 right-2 opacity-0 group-hover/sidebar:opacity-100 transition",
+            "h-6 w-6 text-muted-foreground rounded-sm hover:bg-secondary/80 dark:hover:bg-secondary/80 absolute top-3 right-2 opacity-0 group-hover/sidebar:opacity-100 transition",
             isMobile && "opacity-100"
           )}
         >
@@ -167,17 +175,23 @@ export const Navigation = () => {
           />
           <Item
             onClick={handleCreate}
-            label="New Note"
+            label="New page"
             icon={PlusCircle}
           />
         </div>
         <div className="mt-4">
-          <DocumentList />
-          <Item
-            onClick={handleCreate}
-            icon={Plus}
-            label="Add Note"
-          />
+          <div className="p-1 text-foreground tracking-tight rounded-sm hover:bg-secondary/80 dark:hover:bg-secondary/80" onClick={toggleNotesCollapse} style={{ display: 'flex', paddingLeft: '10px', alignItems: 'center' }}> 
+            <>
+              {isNotesCollapsed ? <FolderClosed /> : <FolderOpen />}
+              <p className="flex-center text-lg font-semibold" style={{ display: 'flex', marginLeft: '10px', alignItems: 'center' }}>Notes</p>
+            </>
+          </div>
+          {!isNotesCollapsed && <DocumentList />}
+            <Item
+              onClick={handleCreate}
+              icon={Plus}
+              label="Add a page"
+            />
           <Popover>
             <PopoverTrigger className="w-full mt-4">
               <Item label="Trash" icon={Trash} />
@@ -193,7 +207,7 @@ export const Navigation = () => {
         <div
           onMouseDown={handleMouseDown}
           onClick={resetWidth}
-          className="opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute h-full w-1 bg-primary/10 right-0 top-0"
+          className="opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute h-full w-1 bg-primary/20 right-0 top-0"
         />
       </aside>
       <div
