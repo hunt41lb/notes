@@ -6,7 +6,7 @@ const MarketingLayout = ({
   children: React.ReactNode;
 }) => {
   return ( 
-    <div className="h-full dark:bg-[#030712]">
+    <div className="h-full bg-background">
       <Navbar />
       <main className="h-full pt-40">
         {children}
@@ -14,5 +14,5 @@ const MarketingLayout = ({
     </div>
    );
 }
- 
-export default MarketingLayout;
+
+export default MarketingLayout
