@@ -37,9 +37,9 @@ export const TrashBox = () => {
     const promise = restore({ id: documentId });
 
     toast.promise(promise, {
-      loading: "Restoring note...",
-      success: "Note restored!",
-      error:" Failed to restore note."
+      loading: "Restoring",
+      success: "Restored!",
+      error: "Failed"
     });
   };
 
@@ -49,9 +49,9 @@ export const TrashBox = () => {
     const promise = remove({ id: documentId });
 
     toast.promise(promise, {
-      loading: "Deleting note...",
-      success: "Note deleted!",
-      error:" Failed to delete note."
+      loading: "Deleting",
+      success: "Deleted!",
+      error: "Failed"
     });
 
     if (params.documentId === documentId) {
@@ -74,20 +74,20 @@ export const TrashBox = () => {
         <Input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="h-7 px-2 focus-visible:ring-transparent bg-secondary"
-          placeholder="Filter by page title..."
+          className="h-7 px-2 focus-visible:ring-transparent bg-input"
+          placeholder="Search"
         />
       </div>
       <div className="mt-2 px-1 pb-1">
-        <p className="hidden last:block text-xs text-center text-muted-foreground pb-2">
-          No Notes Found
+        <p className="hidden last:block text-xs text-center pb-2">
+          Not Found
         </p>
         {filteredDocuments?.map((document) => (
           <div
             key={document._id}
             role="button"
             onClick={() => onClick(document._id)}
-            className="text-sm rounded-sm w-full hover:bg-primary/5 flex items-center text-primary justify-between"
+            className="text-sm rounded-sm w-full hover:bg-secondary flex items-center justify-between"
           >
             <span className="truncate pl-2">
               {document.title}
@@ -96,16 +96,16 @@ export const TrashBox = () => {
               <div
                 onClick={(e) => onRestore(e, document._id)}
                 role="button"
-                className="rounded-sm p-2 hover:bg-neutral-200 dark:hover:bg-neutral-600"
+                className="rounded-sm p-2 hover:bg-muted-foreground/30 dark:hover:bg-muted-foreground/30"
               >
-                <Undo className="h-4 w-4 text-muted-foreground" />
+                <Undo className="h-4 w-4" />
               </div>
               <ConfirmModal onConfirm={() => onRemove(document._id)}>
                 <div
                   role="button"
-                  className="rounded-sm p-2 hover:bg-neutral-200 dark:hover:bg-neutral-600"
+                  className="rounded-sm p-2 hover:bg-destructive dark:hover:bg-destructive"
                 >
-                  <Trash className="h-4 w-4 text-muted-foreground" />
+                  <Trash className="h-4 w-4" />
                 </div>
               </ConfirmModal>
             </div>
