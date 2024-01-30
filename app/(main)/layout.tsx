@@ -1,12 +1,17 @@
 "use client";
 
-import { useConvexAuth } from "convex/react";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { useConvexAuth } from 'convex/react';
 import { redirect } from "next/navigation";
+import { api } from "@/convex/_generated/api";
 
+// Components
 import { Spinner } from "@/components/spinner";
-import { SearchCommand } from "@/components/search-command";
 
+// Navigation
 import { Navigation } from "./_components/navigation";
+import { SearchCommand } from "@/components/search-command";
 
 const MainLayout = ({
   children
@@ -27,15 +32,15 @@ const MainLayout = ({
     return redirect("/");
   }
 
-  return ( 
-    <div className="h-full flex dark:bg-[#030712]">
+  return (
+    <div className="h-full flex bg-backgorund dark:bg-background">
       <Navigation />
-      <main className="flex-1 h-full overflow-y-auto">
+      <main className="bg-background dark:bg-background flex-1 h-full overflow-y-auto">
         <SearchCommand />
         {children}
-      </main>
+      </main> 
     </div>
-   );
+  );
 }
- 
+
 export default MainLayout;
