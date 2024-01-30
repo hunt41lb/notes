@@ -1,9 +1,13 @@
+// Config for the Document List //
+// Includes the "No Pages" //
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useQuery } from "convex/react";
 import { FileIcon } from "lucide-react";
+import { FolderOpen } from "lucide-react";
+
 
 import { Doc, Id } from "@/convex/_generated/dataModel";
 import { api } from "@/convex/_generated/api";
@@ -58,7 +62,7 @@ export const DocumentList = ({
     <>
       <p
         style={{
-          paddingLeft: level ? `${(level * 12) + 25}px` : undefined
+          paddingLeft: level ? `${(level * 12) + 25}px` : undefined 
         }}
         className={cn(
           "hidden text-sm font-medium text-muted-foreground/80",
@@ -66,7 +70,7 @@ export const DocumentList = ({
           level === 0 && "hidden"
         )}
       >
-        End of Hierarchy
+        No Pages
       </p>
       {documents.map((document) => (
         <div key={document._id}>
