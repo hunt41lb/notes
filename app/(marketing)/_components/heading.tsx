@@ -1,22 +1,25 @@
 "use client";
 
-import { useConvexAuth } from "convex/react";
+// Icons //
 import { ArrowRight } from "lucide-react";
-import { SignInButton } from "@clerk/clerk-react";
-import Link from "next/link";
 
+// Components //
 import { Button } from "@/components/ui/button";
+import { useConvexAuth } from "convex/react";
+import { SignInButton } from "@clerk/clerk-react";
 import { Spinner } from "@/components/spinner";
+
+import Link from "next/link";
 
 export const Heading = () => {
   const { isAuthenticated, isLoading } = useConvexAuth();
 
   return (
     <div className="max-w-3xl space-y-4">
-      <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold">
+      <h1 className="text-3xl sm:text-5xl text-foreground md:text-6xl font-bold">
         The last open source notes project.
       </h1>
-      <h3 className="text-base sm:text-xl md:text-2xl font-medium">
+      <h3 className="text-base sm:text-xl text-foreground md:text-2xl font-medium">
         Your open-source haven for crafting, organizing, and <br />
         collaborating on notes.
       </h3>
