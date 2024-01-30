@@ -10,24 +10,24 @@ const Error = () => {
     <div className="h-full flex flex-col items-center justify-center space-y-4">
       <Image
         src="/error.png"
-        height="400"
-        width="400"
+        height="600"
+        width="600"
         alt="Error"
         className="dark:hidden"
       />
       <Image
         src="/error-dark.png"
-        height="400"
-        width="400"
+        height="600"
+        width="600"
         alt="Error"
         className="hidden dark:block"
       />
       <h2 className="text-xl font-medium">
-        We've Encountered an Issue!
+        You found a bug!  To help improve, email thunt@ndit.io
       </h2>
       <Button asChild>
         <Link href="/documents">
-          Go Back
+          Go back
         </Link>
       </Button>
     </div>
