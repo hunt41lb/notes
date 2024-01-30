@@ -22,13 +22,13 @@ export const UserItem = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div role="button" className="flex items-center text-sm p-3 w-full hover:bg-primary/5">
+        <div role="button" className="flex items-center text-sm p-3 w-full hover:bg-secondary/60 dark:hover:bg-secondary/60">
           <div className="gap-x-2 flex items-center max-w-[150px]">
             <Avatar className="h-5 w-5">
               <AvatarImage src={user?.imageUrl} />
             </Avatar>
-            <span className="text-start font-medium line-clamp-1">
-              {user?.fullName}&apos;s Notes
+            <span className="text-start text-foreground font-medium line-clamp-1">
+              {user?.fullName} 
             </span>
           </div>
           <ChevronsLeftRight className="rotate-90 ml-2 text-muted-foreground h-4 w-4" />
@@ -52,7 +52,7 @@ export const UserItem = () => {
             </div>
             <div className="space-y-1">
               <p className="text-sm line-clamp-1">
-                {user?.fullName}&apos;s Notes
+                {user?.fullName}
               </p>
             </div>
           </div>
