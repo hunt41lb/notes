@@ -44,9 +44,9 @@ export const Banner = ({
   };
 
   return (
-    <div className="w-full bg-rose-500 text-center text-sm p-2 text-white flex items-center gap-x-2 justify-center">
+    <div className="w-full bg-destructive text-center text-sm p-2 text-white flex items-center gap-x-2 justify-center">
       <p>
-        This Note is in the Trash.
+        This page is in the Trash.
       </p>
       <Button
         size="sm"
