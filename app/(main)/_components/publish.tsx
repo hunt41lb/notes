@@ -41,7 +41,7 @@ export const Publish = ({
 
     toast.promise(promise, {
       loading: "Publishing...",
-      success: "Note published",
+      success: "Note Published",
       error: "Failed to publish note.",
     });
   };
@@ -74,11 +74,11 @@ export const Publish = ({
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button size="sm" variant="ghost">
-          Publish 
+        <Button size="sm" variant="ghost" className="text-sm text-foreground">
+          Publish
           {initialData.isPublished && (
             <Globe
-              className="text-sky-500 w-4 h-4 ml-2"
+              className="text-primary animate-pulse w-4 h-4 ml-2"
             />
           )}
         </Button>
@@ -92,8 +92,8 @@ export const Publish = ({
         {initialData.isPublished ? (
           <div className="space-y-4">
             <div className="flex items-center gap-x-2">
-              <Globe className="text-sky-500 animate-pulse h-4 w-4" />
-              <p className="text-xs font-medium text-sky-500">
+              <Globe className="text-primary animate-pulse h-4 w-4" />
+              <p className="text-xs font-medium text-secondary-foreground">
                 This note is live on web.
               </p>
             </div>
@@ -117,7 +117,7 @@ export const Publish = ({
             </div>
             <Button
               size="sm"
-              className="w-full text-xs"
+              className="w-full text-sm"
               disabled={isSubmitting}
               onClick={onUnpublish}
             >
@@ -129,7 +129,7 @@ export const Publish = ({
             <Globe
               className="h-8 w-8 text-muted-foreground mb-2"
             />
-            <span className="text-s font-bold text-red-500 text-center">
+            <span className="text-s font-bold text-destructive text-center">
               WARNING
             </span>
             <span className="text-xs mb-4 text-center">
@@ -138,7 +138,7 @@ export const Publish = ({
             <Button
               disabled={isSubmitting}
               onClick={onPublish}
-              className="w-full text-xs"
+              className="w-full text-sm"
               size="sm"
             >
               Publish
